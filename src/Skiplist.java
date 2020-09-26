@@ -1,5 +1,3 @@
-import java.util.Random;
-
 class SkiplistLevel {
     SkiplistNode forward;
     int span;

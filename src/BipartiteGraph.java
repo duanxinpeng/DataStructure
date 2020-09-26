@@ -1,5 +1,13 @@
 public class BipartiteGraph {
 
+    /**
+     *
+     * @param i : 左边元素 
+     * @param map : 表示图的矩阵
+     * @param p : 记录结果（右边的元素对应的左边的元素）
+     * @param vis ： 记录右边的元素在本轮寻找增广路径过程中是否被访问过
+     * @return
+     */
     public static boolean dfs_hungarian(int i, int[][] map, int[] p, boolean[] vis) {
         int m = map.length;
         int n = map[0].length;
@@ -39,11 +47,13 @@ public class BipartiteGraph {
         int cnt = 0;
         for (int i = 1; i < m; i++) {
             vis = new boolean[n];
+            // 每找到一条增光路径就会将匹配的数量加1
             if (dfs_hungarian(i,map,p,vis))
                 cnt++;
         }
         return cnt;
     }
+
 
     // KM算法，计算加权二分图最大匹配问题
     public static boolean dfs_km(int girl,int[] slack, int[] match, int[] expire_girl, int[] expire_boy, boolean[] vis_girl,boolean[] vis_boy, int[][]map) {
@@ -64,6 +74,7 @@ public class BipartiteGraph {
         }
         return false;
     }
+
     public static int km(int[][] map) {
         // 女生数量
         int m = map.length;
